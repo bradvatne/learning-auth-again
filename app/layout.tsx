@@ -1,4 +1,5 @@
 import "./globals.css";
+import AuthContextProvider from "@/components/AuthContext";
 
 export default function RootLayout({
   children,
@@ -7,9 +8,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="w-screen h-screen flex justify-center items-center">
-        {children}
-      </body>
+      <AuthContextProvider>
+        <body className="w-screen h-screen flex justify-center items-center">
+          {children}
+        </body>
+      </AuthContextProvider>
     </html>
   );
 }

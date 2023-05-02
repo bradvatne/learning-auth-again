@@ -28,6 +28,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
     console.log("new user: ", newUser);
   }
   //Find user and verify
+  if (!checkUser?.password)
+    return NextResponse.json({ error: "Error on check password" });
   const checkPass = bcrypt.compare(password, checkUser.password);
   console.log("check password result: ", checkPass);
   //Return error if password check fails
